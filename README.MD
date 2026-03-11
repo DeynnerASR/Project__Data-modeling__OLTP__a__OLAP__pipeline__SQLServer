@@ -18,5 +18,5 @@ En el se contempla los siguientes detalles:
 #### Modelo de datos de la fuente OLTP
 ![data_source_model](/documentation/SOURCE-model.png)
 
-### Modelo de datos destino (OLAP)
+#### Modelo de datos destino (OLAP)
 ![olap_model](/documentation/OLAP-MODEL.png)
