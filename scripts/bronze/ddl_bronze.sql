@@ -28,6 +28,17 @@ DROP TABLE IF EXISTS bronze.stores;
 DROP TABLE IF EXISTS bronze.orders;
 DROP TABLE IF EXISTS bronze.order_items;
 
+CREATE TABLE bronze.brands (
+
+    brand_id INT,
+    brand_name VARCHAR(255),
+
+    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
+    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
+
+);
+
+
 CREATE TABLE bronze.categories (
 
     category_id INT,
@@ -110,37 +121,6 @@ CREATE TABLE bronze.order_items (
 
 );
 
-CREATE TABLE bronze.staffs (
-
-    staff_id INT,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    email VARCHAR(255),
-    phone VARCHAR(25),
-    active TINYINT,
-    store_id INT,
-    manager_id INT,
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
-);
-
-CREATE TABLE bronze.staffs (
-
-    staff_id INT,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    email VARCHAR(255),
-    phone VARCHAR(25),
-    active TINYINT,
-    store_id INT,
-    manager_id INT,
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
-);
 
 CREATE TABLE bronze.staffs (
 
@@ -173,3 +153,4 @@ CREATE TABLE bronze.stores (
     bronze_source VARCHAR(50) DEFAULT 'BikeStores'
 
 );
+
