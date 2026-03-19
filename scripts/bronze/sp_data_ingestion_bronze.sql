@@ -20,7 +20,11 @@ AS
 BEGIN
     SET @variable_batch_start_load_datetime = GETDATE();
 
+
     /*Tabla brands*/
+    PRINT('Iniciaando tabla brands');
+    SET @variable_start_time = GETDATE();
+
     TRUNCATE TABLE bronze.brands;
 
     BULK INSERT bronze.brands
@@ -34,8 +38,23 @@ BEGIN
         TABLOCK
     )
 
+    SET @variable_end_time = GETDATE();
+    SET @duration_time = DATEDIFF(SECOND, @variable_start_time, @variable_end_time);
 
-    /*Tabla categories*/
+    PRINT('Tiempo de carga tabla brands: ' + CAST(@duration_time AS VARCHAR(20)) + ' segundos');
+    PRINT('Finalizando tabla brands');
+
+
+
+
+    PRINT('************************');
+
+
+
+    /*Tabla categories*/    
+    PRINT('Iniciando tabla categories');
+    SET @variable_start_time = GETDATE();
+
     TRUNCATE TABLE bronze.categories;
 
     BULK INSERT bronze.categories
@@ -49,6 +68,19 @@ BEGIN
         TABLOCK
     )
 
+    SET @variable_end_time = GETDATE();
+    SET @duration_time = DATEDIFF(SECOND, @variable_start_time, @variable_end_time);
+
+    PRINT('Tiempo de carga tabla categories: ' + CAST(@duration_time AS VARCHAR(20)) + ' segundos');
+    PRINT('Finalizando tabla categories');
+
+
+
+    PRINT('****************************');
+
+
+    PRINT('Iniciando tabla products');
+    SET @variable_start_time = GETDATE();
 
     /*Tabla products*/
     TRUNCATE TABLE bronze.products;
@@ -63,8 +95,20 @@ BEGIN
         ROWTERMINATOR = '\n',
         TABLOCK
     )
+    SET @variable_end_time = GETDATE();
+    SET @duration_time = DATEDIFF(SECOND, @variable_start_time, @variable_end_time);
+
+    PRINT('Tiempo de carga tabla products: ' + CAST(@duration_time AS VARCHAR(20)) + ' segundos');
+    PRINT('Finalizando tabla products');
 
 
+
+
+    PRINT('************************');
+
+
+    PRINT('Iniciando tabla stocks');
+    SET @variable_start_time = GETDATE();
     /*Tabla stocks*/
     TRUNCATE TABLE bronze.stocks;
 
@@ -78,8 +122,20 @@ BEGIN
         ROWTERMINATOR = '\n',
         TABLOCK
     )
+    SET @variable_end_time = GETDATE();
+    SET @duration_time = DATEDIFF(SECOND, @variable_start_time, @variable_end_time);
+    PRINT('Tiempo de carga tabla stocks: ' + CAST(@duration_time AS VARCHAR(20)) + ' segundos');
+    PRINT('Finalizando tabla stocks');
+
+
+
+    PRINT('************************');
 
     /*Tabla customers*/
+    PRINT('Iniciando tabla customers');
+    SET @variable_start_time = GETDATE();
+
+    
     TRUNCATE TABLE bronze.customers;
 
     BULK INSERT bronze.customers
@@ -92,8 +148,21 @@ BEGIN
         ROWTERMINATOR = '\n',
         TABLOCK
     )
+    SET @variable_end_time = GETDATE();
+    SET @duration_time = DATEDIFF(SECOND, @variable_start_time, @variable_end_time);
+    PRINT('Tiempo de carga tabla customers: ' + CAST(@duration_time AS VARCHAR(20)) + ' segundos');
+    PRINT('Finalizando tabla customers');
 
-        /*Tabla orders*/
+
+
+
+    PRINT('************************');
+
+
+    /*Tabla orders*/
+    PRINT('Iniciando tabla orders');
+    SET @variable_start_time = GETDATE();
+    
     TRUNCATE TABLE bronze.orders;
 
     BULK INSERT bronze.orders
@@ -106,6 +175,16 @@ BEGIN
         ROWTERMINATOR = '\n',
         TABLOCK
     )
+    SET @variable_end_time = GETDATE();
+    SET @duration_time = DATEDIFF(SECOND, @variable_start_time, @variable_end_time);
+    PRINT('Tiempo de carga tabla orders: ' + CAST(@duration_time AS VARCHAR(20)) + ' segundos');
+    PRINT('Finalizando tabla orders');
+
+
+
+
+
+    PRINT('************************');
 
             /*Tabla order_items*/
     TRUNCATE TABLE bronze.order_items;
