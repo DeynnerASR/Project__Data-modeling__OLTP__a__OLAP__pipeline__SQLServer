@@ -120,7 +120,7 @@ CREATE TABLE bronze.stores (
 
 CREATE TABLE bronze.load_details
 (
-    batch_load_datetime TIMESTAMP,
+    batch_start_load_datetime TIMESTAMP,
     batch_end_load_datetime TIMESTAMP,
     duration_time TIME, 
     error_message TEXT,
