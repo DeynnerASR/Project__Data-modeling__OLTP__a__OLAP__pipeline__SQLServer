@@ -31,22 +31,14 @@ DROP TABLE IF EXISTS bronze.order_items;
 CREATE TABLE bronze.brands (
 
     brand_id INT,
-    brand_name VARCHAR(255),
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    brand_name VARCHAR(255)
 );
 
 
 CREATE TABLE bronze.categories (
 
     category_id INT,
-    category_name VARCHAR(255),
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    category_name VARCHAR(255)
 );
 
 CREATE TABLE bronze.products (
@@ -56,22 +48,14 @@ CREATE TABLE bronze.products (
     brand_id INT,
     category_id INT,
     model_year SMALLINT,
-    list_price DECIMAL(10,2),
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    list_price DECIMAL(10,2)
 );
 
 CREATE TABLE bronze.stocks (
 
     store_id INT,
     product_id INT,
-    quantity INT,
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    quantity INT
 );
 
 CREATE TABLE bronze.customers (
@@ -84,11 +68,7 @@ CREATE TABLE bronze.customers (
     street VARCHAR(255),
     city VARCHAR(50),
     state VARCHAR(25),
-    zip_code VARCHAR(5),
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    zip_code VARCHAR(5)
 );
 
 CREATE TABLE bronze.orders (
@@ -100,11 +80,7 @@ CREATE TABLE bronze.orders (
     required_date DATE,
     shipped_date DATE,
     store_id INT,
-    staff_id INT,
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    staff_id INT
 );
 
 CREATE TABLE bronze.order_items (
@@ -114,11 +90,7 @@ CREATE TABLE bronze.order_items (
     product_id INT,
     quantity INT,
     list_price DECIMAL(10,2),
-    discount DECIMAL(4,2),
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    discount DECIMAL(4,2)
 );
 
 
@@ -131,11 +103,7 @@ CREATE TABLE bronze.staffs (
     phone VARCHAR(25),
     active TINYINT,
     store_id INT,
-    manager_id INT,
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    manager_id INT
 );
 
 CREATE TABLE bronze.stores (
@@ -147,10 +115,13 @@ CREATE TABLE bronze.stores (
     street VARCHAR(255),
     city VARCHAR(255),
     state VARCHAR(10),
-    zip_code VARCHAR(5),
-
-    bronze_load_datetime DATETIME2 DEFAULT GETDATE(),
-    bronze_source VARCHAR(50) DEFAULT 'BikeStores'
-
+    zip_code VARCHAR(5)
 );
 
+CREATE TABLE bronze.load_details
+(
+    batch_load_datetime TIMESTAMP,
+    batch_end_load_datetime TIMESTAMP,
+    duration_time TIME, 
+    error_message TEXT,
+);
